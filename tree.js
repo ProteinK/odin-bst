@@ -1,13 +1,3 @@
-const prettyPrint = (node, prefix = '', isLeft = true) => {
-  if (node.right !== null) {
-    prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
-  }
-  console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
-  if (node.left !== null) {
-    prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
-  }
-}
-
 const deleteRec = (root, data) => {
   if (root === null) return root;
 
@@ -241,53 +231,4 @@ class Tree {
   }
 }
 
-const tree = new Tree([1, 1, 5, 3, 4, 6, 2, 7, 7, 8]);
-prettyPrint(tree.root);
-console.log(tree.isBalanced());
-tree.insert(9);
-tree.insert(15);
-tree.insert(13);
-prettyPrint(tree.root);
-tree.delete(15);
-prettyPrint(tree.root);
-tree.delete(6);
-prettyPrint(tree.root);
-tree.insert(6);
-prettyPrint(tree.root);
-console.log(tree.find(8));
-console.log(tree.find(3));
-console.log(tree.find(100));
-
-console.log("breadth-first");
-prettyPrint(tree.root);
-console.log(tree.levelOrder());
-console.log(tree.levelOrder((node) => "n: " + node.data));
-
-console.log("preorder");
-prettyPrint(tree.root);
-console.log(tree.preorder());
-console.log(tree.preorder((node) => "n: " + node.data));
-
-console.log("inorder")
-prettyPrint(tree.root);
-console.log(tree.inorder());
-console.log(tree.inorder((node) => "n: " + node.data));
-
-console.log("postorder")
-prettyPrint(tree.root);
-console.log(tree.postorder());
-console.log(tree.postorder((node) => "n: " + node.data));
-
-prettyPrint(tree.root);
-console.log("height of root: ", height(tree.root));
-console.log("height of 2: ", height(tree.find(2)));
-
-console.log("depth of root: ", depth(tree.root, tree.root));
-console.log("depth of 1: ", depth(tree.find(1), tree.root));
-console.log("depth of 13: ", depth(tree.find(13), tree.root));
-
-prettyPrint(tree.root);
-console.log(tree.isBalanced());
-tree.rebalance();
-prettyPrint(tree.root);
-console.log(tree.isBalanced());
+module.exports = { Tree };
